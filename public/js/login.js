@@ -50,7 +50,7 @@ function reverseGeocode(latitude, longitude, userId, mail) {
       return;
   }
 
-  const apiKey = 'AIzaSyA7giim5Nfml_1AGfacBZKaDxR3d8j8HYU';
+  const apiKey = 'API_key';
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
   fetch(url)
