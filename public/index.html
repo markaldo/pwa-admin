@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MK Bakery</title>
+  <link rel="icon" type="image/x-icon" href="/img/icons/favicon.ico">
+  <!-- materialize icons, css & js -->
+  <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" href="/css/styles.css" rel="stylesheet">
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <link rel="manifest" href="/manifest.json">
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE587">
+  <meta name="theme-color" content="#FFE587">
+</head>
+    <body class="main-body">
+        
+        <!-- CHANGE PASSWORD MODAL -->
+        <div id="modal-password" class="modal">
+            <div class="modal-content">
+                <h4>Change Password</h4>
+                <form id="change-password">
+                    <div class="input-field">
+                        <input type="password" id="password" autocomplete="new-password" required>
+                        <label for="password">New Password</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="confirm-password" autocomplete="new-password" required>
+                        <label for="confirm-password">Confirm Password</label>
+                    </div>
+                    <button class="btn yellow darken-2 z-depth-0">Change</button>
+                    <p class="error pink-text center-align"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- top nav -->
+        <nav class="z-depth-0">
+            <div class="nav-wrapper container">
+                <a href="/">MK<span>Bakery</span></a>  
+                <span class="right">
+                    <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+                </span>
+            </div>
+        </nav>
+
+        <!-- side nav -->
+        <ul id="side-menu" class="sidenav side-menu">
+            <li><a class="subheader">MK BAKERY</a></li>
+            <li><a href="/" class="waves-effect">Home</a></li>
+            <li><a href="#" class="waves-effect modal-trigger" data-target="modal-password">Change Password</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="/pages/technician.html" class="waves-effect"><i class="material-icons">mail_outline</i>Contact Technician</a></li>
+            <li><a href="#" id="logout" onclick="logout()"><i class="material-icons">logout</i>Logout</a></li>
+        </ul>
+        
+        <div>
+            <h2 class="center brown-text text-darken-4">Bakery Control Panel</h2>
+        </div>
+
+        <!-- recipes -->
+        <div class="recipes container grey-text text-darken-1">
+            
+        </div>
+
+        <div class="center">
+            <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+            <i class="material-icons">add</i>
+            </a>
+        </div>
+
+        <!-- add recipe side nav -->
+        <div id="side-form" class="sidenav side-form">
+            <form id="addRecipe" class="addRecipe container section">
+                <h6>New Product</h6>
+                <div class="divider"></div>
+                <div class="input-field">
+                    <input placeholder="e.g. Beef Wrap" id="title" type="text" class="validate">
+                    <label for="title">Product Title</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="e.g. Tortilla, beef, salad" id="ingredients" type="text" class="validate">
+                    <label for="ingredients">Ingredients</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="25" id="price" type="number" class="validate">
+                    <label for="price">Product Price</label>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <label for="image">Upload Picture</label>
+                        <input type="file" name="image" accept="image/*" id="image">
+                    </div>
+                    <div class="take-photo-btn">
+                        <button id="take-picture-button" class="btn-small">Take Picture</button>
+                    </div>
+                </div>            
+
+                <video id="camera-stream" style="display: none;" autoplay></video>
+                <canvas id="captured-image" style="display: none;"></canvas>
+                <div class="input-field center">
+                    <button type="button" class="btn-small" onclick="addRecipe()">Add</button>
+                </div>
+
+                <p class="msg-update orange-text text-darken-1"></p>
+            </form>
+        </div>
+    
+        <!-- Firebase Initialization -->
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-storage.js"></script>
+        
+        <script>
+            // Initialize Firebase
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+            apiKey: "AIzaSyBrszdeo4bk6zy1OPSOSRqrR_WInK51Bhs",
+            authDomain: "mk-backery-firestore-c43a8.firebaseapp.com",
+            projectId: "mk-backery-firestore-c43a8",
+            storageBucket: "mk-backery-firestore-c43a8.appspot.com",
+            messagingSenderId: "997727089384",
+            appId: "1:997727089384:web:7879571b2bf6941fc70f5d",
+            measurementId: "G-L2670WP5QH"
+            };
+            firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
+            const auth = firebase.auth();
+            const storageRef = firebase.storage().ref();
+        </script>
+        <script src="/js/app.js"></script>
+        <script src="/js/db.js"></script>
+        <script src="/js/ui.js"></script>
+        <!-- <script src="/js/auth.js"></script> -->
+    </body>
+</html>

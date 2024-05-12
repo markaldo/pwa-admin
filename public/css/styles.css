@@ -1,0 +1,90 @@
+/* colours */
+:root{
+    --primary: #FFD12D;
+    --secondary: #FFDB5B;
+    --title: #4D2F1F;
+  }
+  
+  body {
+    background-color: #FFE587;
+  }
+  /* layout styles */
+  nav{
+    background: var(--primary);
+    border-bottom: 10px solid var(--secondary);
+    color: var(--title);
+  }
+  nav a{
+    text-transform: uppercase;
+    color: var(--title);
+  }
+  nav a span{
+    font-weight: bold;
+  }
+  nav .sidenav-trigger{
+    margin: 0;
+  }
+  
+  /* recipe styles */
+  .recipes{
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .recipe-price {
+    position: absolute;
+    font-weight: bold;
+    top: 10px; /* adjust this value to position vertically */
+    right: 10px; /* adjust this value to position horizontally */
+    padding: 5px 10px; /* optional: add padding for better visibility */
+    border-radius: 5px; /* optional: add border radius for rounded corners */
+  }
+  
+  .card-panel.recipe{
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+    display: grid;
+    grid-template-columns: 2fr 6fr 1fr;
+    grid-template-areas: "image details delete";
+    position: relative;
+  }
+  .recipe img{
+    grid-area: image;
+    max-width: 60px;
+  }
+  .recipe-details{
+    grid-area: details;
+    margin-top: 6px;
+  }
+  .recipe-delete{
+    grid-area: delete;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+  .recipe-delete i{
+    font-size: 18px;
+  }
+  .recipe-title{
+    font-weight: bold;
+  }
+  .recipe-ingredients{
+    font-size: 0.8em;
+  }
+  
+  /* form-styles */
+  .add-btn{
+    background: var(--title) !important;
+  }
+  input{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+  .side-form button{
+    background: var(--title);
+    box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
+  }
+  form .input-field{
+    margin-top: 30px;
+  }
