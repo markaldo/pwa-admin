@@ -3,6 +3,7 @@
     --primary: #FFD12D;
     --secondary: #FFDB5B;
     --title: #4D2F1F;
+    --button: darkorange;
   }
   
   body {
@@ -74,17 +75,115 @@
   }
   
   /* form-styles */
-  .add-btn{
-    background: var(--title) !important;
-  }
-  input{
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-  }
-  .side-form button{
-    background: var(--title);
-    box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
-  }
-  form .input-field{
-    margin-top: 30px;
-  }
+.side-form {
+  width: 370px;
+}
+.addRecipe {
+  margin-top: 25px;
+}
+form .input-field {
+  margin-top: 30px;
+}
+.side-form button {
+  border: none;
+  border-radius: 10px;
+  color: whitesmoke;
+}
+.custom-size {
+  font-size: 36px; /* Set your desired size */
+}
+.upload-picture-container {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add some space below the container */
+}
+.take-photo-btn {
+  margin-right: 50px; /* Increase the spacing */
+}
+.canvas {
+  max-width: 95%; /* Adjust the value as needed */
+  margin-right: 0 auto; /* Center the canvas horizontally */
+  border: 2px solid var(--title); /* Add a colored border */
+}
+.capture-picture button {
+  margin: 25px; /* Add some spacing between buttons */
+}
+.add-btn {
+  background-color: orange;
+}
+.take-photo-btn .take-btn {
+  background-color: #029400;
+}
+.capture-btn {
+  background-color: #00c2ff;
+}
+.retake-btn {
+  background-color: #ff6600;
+}
+.save-btn {
+  background-color: #00ffff;
+}
+.submit-btn {
+  background-color: #029400;
+}
+.close-btn {
+  background-color: #ff0000;
+}
+
+/* notifications styles.css */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; 
+  border-radius: 10px;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  opacity: 0.7;
+  border-bottom: visible;
+}
+.toast i {
+  margin-right: 10px;
+}
+.toast .content {
+ margin-right: 15px;
+ font-size: 12px; /* Reduce the font size */
+ color: #f5f5f5; /* Set the off-white color */
+}
+.toast .content strong {
+  font-size: 14px;
+  color: #fff; /* Keep the strong text white */
+}
+.toast.success {
+  background: linear-gradient(to right, green, #000, #000);
+  background-color: green;
+  border-bottom: 2.5px solid #05FF00;
+  box-shadow: 0 10px 15px 2px green;
+}
+.toast.info {
+  background: linear-gradient(to right, blue, #000, #000);
+  background-color: blue;
+  border-bottom: 2.5px solid #0085FF;
+  box-shadow: 0 10px 15px 2px blue;
+}
+.toast.warning {
+  background: linear-gradient(to right, orange, #000, #000);
+  background-color: orange;
+  border-bottom: 2.5px solid #F8FB5C;
+  box-shadow: 0 10px 15px 2px orange;
+}
+.toast.error {
+  background: linear-gradient(to right, red, #000, #000);
+  background-color: red;
+  border-bottom: 2.5px solid #FF4040;
+  box-shadow: 0 10px 15px 2px #D70000;
+}
+.toast .close {
+  cursor: pointer;
+  margin-left: auto;
+  font-size: 18px;
+}

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // render recipe data
 const renderRecipe = (data, id) => {
-  let imageUrl = (data.url !== null && data.url !== undefined) ? data.url : '/img/icon.png';
+  let imageUrl = (data.url !== null && data.url !== undefined) ? data.url : '/img/bread.png';
   const html = `
     <div class="card-panel recipe white row" data-id="${id}">
       <img src="${imageUrl}" alt="recipe thumb">

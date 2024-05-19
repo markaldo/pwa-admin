@@ -1,10 +1,10 @@
 auth.onAuthStateChanged(user => {
-  if (user) {
-    //console.log('user logged in: ', user);
-  } else {
-    //console.log('user logged out');
-  }
-})
+    if (user) {
+      showNotification('Welcome to Your App', 'You have successfully logged in.', 'login-notification');
+    } else {
+      showNotification('Thank you.', 'You have successfully logged out.', 'logout-notification');
+    }
+});
 
 // login.js
 document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -33,7 +33,6 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
           } else {
               console.error('Geolocation is not supported by this browser.');
           }
-
           // If authentication is successful, redirect to index.html
           //window.location.href = '/index.html';
       })
@@ -50,7 +49,7 @@ function reverseGeocode(latitude, longitude, userId, mail) {
       return;
   }
 
-  const apiKey = 'AIzaSyA7giim5Nfml_1AGfacBZKaDxR3d8j8HYU';
+  const apiKey = 'my_api_key'; 
   const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
 
   fetch(url)
@@ -74,26 +73,26 @@ function reverseGeocode(latitude, longitude, userId, mail) {
               }
 
               console.log('User details:', {
-                    userId,
-                    mail,
-                    country,
-                    city,
-                    district,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                  userId,
+                  mail,
+                  country,
+                  city,
+                  district,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp()
               });
 
               // Save user details to Firestore
               db.collection('history').add({
-                    userId,
-                    mail,
-                    country,
-                    city,
-                    district,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                  userId,
+                  mail,
+                  country,
+                  city,
+                  district,
+                  timestamp: firebase.firestore.FieldValue.serverTimestamp()
               }).then(() => {
-                    console.log('User details saved to Firestore.');
-                    // If authentication is successful, redirect to index.html
-                    window.location.href = '/index.html';
+                  console.log('User details saved to Firestore.');
+                  // If authentication is successful, redirect to index.html
+                  window.location.href = '/index.html';
               }).catch(error => {
                   console.error('Error saving user details to Firestore:', error);
               });
@@ -106,7 +105,17 @@ function reverseGeocode(latitude, longitude, userId, mail) {
       });
 }
 
-
-
+// Function to show notifications
+function showNotification(title, body, tag) {
+    const notification = new Notification(title, {
+      body: body,
+      icon: 'img/icon.png',
+      tag: tag,
+    });
+  
+    notification.addEventListener('error', (e) => {
+      console.error('Notification error:', e);
+    });
+  }
 
 

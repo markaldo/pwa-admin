@@ -63,51 +63,72 @@
         </div>
 
         <!-- recipes -->
-        <div class="recipes container grey-text text-darken-1">
-            
-        </div>
+        <div class="recipes container grey-text text-darken-1"></div>
 
         <div class="center">
-            <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
+            <a class="btn-floating add-btn sidenav-trigger" data-target="side-form">
             <i class="material-icons">add</i>
             </a>
         </div>
 
         <!-- add recipe side nav -->
         <div id="side-form" class="sidenav side-form">
-            <form id="addRecipe" class="addRecipe container section">
+            <form id="addRecipe" class="addRecipe container">
                 <h6>New Product</h6>
                 <div class="divider"></div>
                 <div class="input-field">
-                    <input placeholder="e.g. Beef Wrap" id="title" type="text" class="validate">
-                    <label for="title">Product Title</label>
+                  <input placeholder="e.g. Beef Wrap" id="title" type="text" class="validate">
+                  <label for="title">Product Title</label>
                 </div>
                 <div class="input-field">
-                    <input placeholder="e.g. Tortilla, beef, salad" id="ingredients" type="text" class="validate">
-                    <label for="ingredients">Ingredients</label>
+                  <input placeholder="e.g. Tortilla, beef, salad" id="ingredients" type="text" class="validate">
+                  <label for="ingredients">Ingredients</label>
                 </div>
                 <div class="input-field">
-                    <input placeholder="25" id="price" type="number" class="validate">
-                    <label for="price">Product Price</label>
+                  <input placeholder="25" id="price" type="number" class="validate">
+                  <label for="price">Product Price</label>
                 </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <label for="image">Upload Picture</label>
-                        <input type="file" name="image" accept="image/*" id="image">
-                    </div>
+                <div class="upload-picture-container">
                     <div class="take-photo-btn">
-                        <button id="take-picture-button" class="btn-small">Take Picture</button>
+                      <button id="take-picture-button" class="take-btn" type="button">
+                        <i class="material-icons custom-size">add_a_photo</i>
+                      </button>
                     </div>
-                </div>            
-
-                <video id="camera-stream" style="display: none;" autoplay></video>
-                <canvas id="captured-image" style="display: none;"></canvas>
-                <div class="input-field center">
-                    <button type="button" class="btn-small" onclick="addRecipe()">Add</button>
+                    <div class="upload-picture">
+                      <label for="image">Upload Picture</label>
+                      <input type="file" name="image" accept="image/*" id="image">
+                    </div>
                 </div>
-
+                
+                <div class="canvas">
+                    <video id="camera-stream" style="display: none;" autoplay></video>
+                    <canvas id="captured-image" style="display: none;"></canvas>
+                </div>
+                
+                <div class="capture-picture center">
+                    <button id="capture-button" class="capture-btn" type="button" style="display: none;">
+                        <i class="material-icons custom-size">camera</i>
+                    </button>
+                    <button id="retake-button" class="retake-btn" type="button" style="display: none;">
+                        <i class="material-icons custom-size">autorenew</i>
+                    </button>
+                    <button id="save-gallery-button" class="save-btn" type="button" style="display: none;">
+                        <i class="material-icons custom-size">add_to_photos</i>
+                    </button>
+                    <button id="close-button" class="close-btn" type="button" style="display: none;">
+                        <i class="material-icons custom-size">cancel</i>
+                    </button>
+                </div>
+            
+                <div class="input-field center">
+                    <label for="submit-btn">Add Recipe</label>
+                    <button type="button" class="submit-btn" id="submit-btn" onclick="addRecipe()">
+                        <i class="material-icons custom-size">done</i>
+                    </button>
+                </div>
+              
                 <p class="msg-update orange-text text-darken-1"></p>
-            </form>
+              </form>
         </div>
     
         <!-- Firebase Initialization -->
@@ -120,13 +141,13 @@
             // Initialize Firebase
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             const firebaseConfig = {
-            apiKey: "AIzaSyBrszdeo4bk6zy1OPSOSRqrR_WInK51Bhs",
-            authDomain: "mk-backery-firestore-c43a8.firebaseapp.com",
-            projectId: "mk-backery-firestore-c43a8",
-            storageBucket: "mk-backery-firestore-c43a8.appspot.com",
-            messagingSenderId: "997727089384",
-            appId: "1:997727089384:web:7879571b2bf6941fc70f5d",
-            measurementId: "G-L2670WP5QH"
+                apiKey: "AIzaSyBrszdeo4bk6zy1OPSOSRqrR_WInK51Bhs",
+                authDomain: "mk-backery-firestore-c43a8.firebaseapp.com",
+                projectId: "mk-backery-firestore-c43a8",
+                storageBucket: "mk-backery-firestore-c43a8.appspot.com",
+                messagingSenderId: "997727089384",
+                appId: "1:997727089384:web:7879571b2bf6941fc70f5d",
+                measurementId: "G-L2670WP5QH"
             };
             firebase.initializeApp(firebaseConfig);
             const db = firebase.firestore();
@@ -136,6 +157,6 @@
         <script src="/js/app.js"></script>
         <script src="/js/db.js"></script>
         <script src="/js/ui.js"></script>
-        <!-- <script src="/js/auth.js"></script> -->
+        
     </body>
 </html>
