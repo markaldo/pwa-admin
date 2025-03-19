@@ -1,4 +1,5 @@
-MKBakery Admin Panel
+# MKBakery Admin Panel
+
 A Progressive Web App (PWA) for managing bakery products
 Manage bakery products with Create/Read/Update/Delete functionality
 
@@ -20,17 +21,17 @@ Modular components for future feature expansion
  4. It is capable of using device native capabilities e.g geolocation extraction, taking pictures and push notifications.
  5. It open and suitable for expandition.                                                                                
 
-# 1. Clone repository
+## 1. Clone repository
 git clone https://github.com/markaldo/pwa-admin.git
 
-# 2. Install dependencies
+## 2. Install dependencies
 npm install
 
-# 3. Configure environment variables
+## 3. Configure environment variables
 cp .env.example .env.local
 
-# 4. Start development server
+## 4. Start development server
 npm start
 
-# 5. Build for production
+## 5. Build for production
 npm run build
